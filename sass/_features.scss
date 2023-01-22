@@ -1,0 +1,36 @@
+.features {
+  grid-column: center-start / center-end;
+
+  margin: 15rem 0;
+
+  display: grid;
+  //grid-template-columns: repeat(3, 1fr); //this only works with static size screens
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  /* with this repeat auto-fit and following minmax, the columns can not get smaller then 250px with smaller screens. it would then go into a two column display on tablet and single column display with smart-phone */
+  //grid-template-rows: auto auto; // -> this is what happens on default
+  grid-gap: 6rem;
+  align-items: start; //so that the distance between h4 and text is the same in each cell
+
+  @media only screen and (max-width: $bp-small) {
+    margin: 8rem 0;
+  }
+}
+
+.feature {
+  //each feature is a gird inside the features parent-grid
+  display: grid;
+  grid-template-columns: min-content 1fr; //2 columns. min-content for icon column
+  grid-gap: 1.5rem 2.5rem;
+
+  &__icon {
+    fill: $color-primary; //change color with svg elements use fill
+    height: 4.5rem;
+    width: 4.5rem;
+    grid-row: 1 / span 2;
+    transform: translateY(-1rem);
+  }
+
+  &__text {
+    font-size: 1.7rem;
+  }
+}
